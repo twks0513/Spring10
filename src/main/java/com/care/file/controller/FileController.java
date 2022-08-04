@@ -42,7 +42,6 @@ public class FileController {
 	
 	@GetMapping("download")
 	public void download(String file,HttpServletResponse response) throws Exception {
-		System.out.println("file : "+file);
 		response.addHeader("Content-disposition", "attachment; filename="+file); //파일을 다운로드형식으로 응답
 		File f = new File(FileService.IMAGE_REPO+"/"+file); //파일경로를 파일객체로 만듦
 		FileInputStream in = new FileInputStream(f); // InputStream으로 경로에 있는 파일을 읽어옮
@@ -56,4 +55,29 @@ public class FileController {
 		return "redirect:views";
 	}
 	
+	@GetMapping("modify_form")
+	public String modify_form(String id,Model model) {
+		fs.getOneData(id,model);
+		return "modify_form";
+	}
+	
+	@PostMapping("modify")
+	public String modify(MultipartHttpServletRequest mul) {		
+		fs.modify(mul);		
+		return "redirect:views";
+	}
+	
+	@GetMapping("form02")
+	public String form02() {
+		return "form02";
+	}
+	@PostMapping("upload2")
+	public String upload02(MultipartHttpServletRequest mul) {
+		fs.fileProcess02(mul);
+		return "null";
+	}
+	@GetMapping("auth")
+	public String auth() {
+		return "redirect:https://www.google.com";
+	}
 }

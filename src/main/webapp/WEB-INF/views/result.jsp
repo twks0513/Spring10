@@ -15,6 +15,7 @@
 		<img src="download?file=${dto.imgName }" width="100px" height="100px"><br>
 		<a href="download?file=${dto.imgName }">다운로드</a><br>
 		<a href="delete?file=${dto.imgName }&id=${dto.id }">파일 삭제</a> 
+		<a href="modify_form?id=${dto.id }">파일 수정</a>
 		<hr>
 	</c:forEach>
 	<a href="form">업로드 이동</a>
